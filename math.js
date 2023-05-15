@@ -41,7 +41,15 @@ function calcularAlturaTriangulo(lado1, base) {
     const h = Math.sqrt(lado1 ** 2 - (base ** 2) / 4)
     return h
   }
-  
+}
+
+function calcularAlturaTrianguloABC(lado1, lado2, lado3) {
+if (lado1==lado2 || lado1==lado3 || lado2==lado3) {
+  return false
+}else {
+  const h = Math.sqrt(lado2**2 - ((lado2**2 - lado3**2 + lado1**2)/(2*lado1))**2)
+  return Math.floor(h)
+}
 }
 console.log(
   {
