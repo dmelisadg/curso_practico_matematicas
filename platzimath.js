@@ -1,4 +1,8 @@
-function calcularPromedio(lista) {
+const PlatziMath = {
+    
+}
+
+PlatziMath.calcularPromedio = function calcularPromedio(lista) {
 
     let sumList = 0;
 
@@ -10,7 +14,7 @@ function calcularPromedio(lista) {
     return promedio
 }
 
-function calcularPromedioReduce(lista) {
+PlatziMath.calcularPromedioReduce = function calcularPromedioReduce(lista) {
 
     function sumElements(sumValue, newValue) {
         return sumValue + newValue
@@ -23,7 +27,7 @@ function calcularPromedioReduce(lista) {
     return promedio
 }
 
-function calcularPromedioArrow(lista) {
+PlatziMath.calcularPromedioArrow = function calcularPromedioArrow(lista) {
 
     const sumElements = (sumValue, newValue) => sumValue + newValue;
 
@@ -34,21 +38,21 @@ function calcularPromedioArrow(lista) {
     return promedio
 }
 
-function esPar(lista) {
+PlatziMath.esPar = function esPar(lista) {
     return !(lista.length % 2)
 }
-function esImpar(lista) {
+PlatziMath.esImpar = function esImpar(lista) {
     return (lista.length % 2)
 }
 
-function calcularMediana(lista) {
-    const listaSort = ordenarLista(lista);
-    const listaEsPar = esPar(listaSort);
+PlatziMath.calcularMediana = function calcularMediana(lista) {
+    const listaSort = PlatziMath.ordenarLista(lista);
+    const listaEsPar = PlatziMath.esPar(listaSort);
     if (listaEsPar) {
         const indexInferior = (lista.length / 2) - 1;
         const indexSuperior = (lista.length / 2)
         const listaMitades = [lista[indexInferior], lista[indexSuperior]]
-        return calcularPromedio(listaMitades)
+        return PlatziMath.calcularPromedio(listaMitades)
     } else {
         const indiceMedianaImpar = Math.floor(lista.length / 2);
 
@@ -56,16 +60,16 @@ function calcularMediana(lista) {
     }
 }
 
-function ordenarLista(listaDesordenada) {
+PlatziMath.ordenarLista = function ordenarLista(listaDesordenada) {
     const lista = listaDesordenada.sort((a, b) => a - b);
     return lista
 }
-function ordenarListaBidim(listaDesordenada) {
+PlatziMath.ordenarListaBidim = function ordenarListaBidim(listaDesordenada) {
     const lista = listaDesordenada.sort((a, b) => a[1] - b[1]);
     return lista
 }
 
-function calcularModa(lista) {
+PlatziMath.calcularModa = function calcularModa(lista) {
     const listaCount = {};
 
     for (let i = 0; i < lista.length; i++) {
@@ -78,10 +82,28 @@ function calcularModa(lista) {
         }
     }
     const listaArray = Object.entries(listaCount);
-    const listaOrdenada = ordenarListaBidim(listaArray);
+    const listaOrdenada = PlatziMath.ordenarListaBidim(listaArray);
     const listaOrdenadaMaxNumber = listaOrdenada[listaOrdenada.length - 1];
     const moda = listaOrdenadaMaxNumber[0]
-    // console.log(listaCount, listaArray, listaOrdenada, listaOrdenadaMaxNumber)
+    console.log(listaCount, listaArray, listaOrdenada, listaOrdenadaMaxNumber)
     return console.log('La moda es ' + listaOrdenadaMaxNumber[0] + ' y se repite ' + listaOrdenadaMaxNumber[1] + ' veces')
     // return moda
+}
+
+const obj = {
+    123: 'Melisa DG',
+    456: 'Daniela Z'
+}
+
+function solution(obj) {
+    const objArray = Object.entries(obj)
+    let a = [];
+    objArray.forEach(element => {
+        a.push(
+            {
+                id: element[0],
+                name: element[1]
+            })
+    })
+    return a
 }
